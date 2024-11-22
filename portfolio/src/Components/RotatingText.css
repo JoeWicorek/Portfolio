@@ -1,0 +1,16 @@
+.rotating-text {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px;
+    animation: fade 4s ease-in-out infinite;
+    display: inline-block;
+}
+.location-text {
+    display: inline-block;
+}
+
+@keyframes fade {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}

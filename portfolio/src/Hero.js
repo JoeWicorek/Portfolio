@@ -1,13 +1,17 @@
 import React from 'react';
+import RotatingText from './Components/RotatingText'; 
+import Typewriter from './Components/Typewriter';
 
 const Hero = () => {
   return (
     <section className="bg-gray-900 text-white h-screen flex flex-col justify-center items-center text-center">
       <h1 className="text-5xl font-bold mb-4">
-        Hello, I’m [Your Name]
+        Hello, I’m Joseph Wicorek
       </h1>
       <p className="text-2xl mb-8">
-        I’m a [Your Profession] specializing in [your skills or interests].
+        <div>  
+         <Typewriter /> 
+         </div>
       </p>
       <a
         href="#projects"
