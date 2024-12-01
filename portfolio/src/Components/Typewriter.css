@@ -1,0 +1,9 @@
+@keyframes blink {
+    0% { border-color: transparent }
+    50% { border-color: black }
+    100% { border-color: transparent }
+}
+
+.animate-blink {
+    animation: blink 1s step-end infinite;
+} 

@@ -1,33 +1,53 @@
 import React, { useState, useEffect } from 'react';
+import './Typewriter.css';
 
 const Typewriter = () => {
     const phrases = [
         "Software Engineer",
         "Web Developer",
-        "Data Scientist",
+        "Data Engineer",
     ];
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [animationDuration, setAnimationDuration] = useState(0);
-
+    const [displayText, setDisplayText] = useState('');
+    const [isDeleting, setIsDeleting] = useState(false);
+    
     useEffect(() => {
-        const phraseLength = phrases[currentIndex].length;
-        const duration = phraseLength * 0.1 + 1; // 0.1s per character + 1s pause
-        setAnimationDuration(duration);
-        const interval = setInterval(() => {
-            setCurrentIndex((prevIndex) => (prevIndex + 1) % phrases.length);
-        }, 1000); // Match duration of the typewriter animation (5s)
-        return () => clearInterval(interval);
-    }, []);
+        const typingSpeed = 100; // Speed in milliseconds per character
+        const deletingSpeed = 50; // Faster deletion speed
+        const pauseDuration = 1000; // Pause when word is complete
+
+        const handleTyping = () => {
+            const currentPhrase = phrases[currentIndex];
+            
+            if (!isDeleting) {
+                if (displayText !== currentPhrase) {
+                    setDisplayText(currentPhrase.substring(0, displayText.length + 1));
+                } else {
+                    setTimeout(() => setIsDeleting(true), pauseDuration);
+                }
+            } else {
+                if (displayText === '') {
+                    setIsDeleting(false);
+                    setCurrentIndex((prev) => (prev + 1) % phrases.length);
+                } else {
+                    setDisplayText(currentPhrase.substring(0, displayText.length - 1));
+                }
+            }
+        };
+
+        const timer = setTimeout(
+            handleTyping,
+            isDeleting ? deletingSpeed : typingSpeed
+        );
+
+        return () => clearTimeout(timer);
+    }, [displayText, isDeleting, currentIndex]);
 
     return (
         <div className="flex justify-center items-center h-16">
-            <div
-                className={`text-2xl font-bold overflow-hidden whitespace-nowrap border-r-2 border-black`}
-                style={{
-                    animation: `typewriter ${animationDuration}s steps(${phrases[currentIndex].length}) 1s normal both, blink 0.7s step-end infinite`,
-                }}
-            >
-                {phrases[currentIndex]}
+            <div className="text-2xl font-bold">
+                {displayText}
+                <span className="border-r-2 border-black animate-blink"></span>
             </div>
         </div>
     );

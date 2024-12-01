@@ -1,0 +1,26 @@
+.rain-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.rain-drop {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: blue;
+    animation: rain 1s linear infinite;
+}
+
+@keyframes rain {
+    from {
+        transform: translateY(-20px);
+    }
+    to {
+        transform: translateY(100vh);
+    }
+} 
