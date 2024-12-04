@@ -1,27 +1,34 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './RainBackground.css';
 
 const RainBackground = () => {
-    // Start with just 50 drops for testing
-    const drops = Array.from({ length: 50 }, (_, i) => (
-        <div 
-            key={i} 
-            className="rain-drop"
-            style={{
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 2}s`,
-            }}
-        />
+    const drops = Array.from({ length: 50 }).map((_, index) => (
+        <div key={index} className="drop-container">
+            <div
+                className="drop"
+                style={{
+                    left: `${Math.random() * 100}%`,
+                    animationDelay: `${Math.random() * 3}s`,
+                    animationDuration: `${1.8 + Math.random()}s`,
+                    opacity: 0.4 + Math.random() * 0.3,
+                }}
+            />
+            <div
+                className="splash"
+                style={{
+                    left: `${Math.random() * 100}%`,
+                    animationDelay: `${Math.random() * 3}s`,
+                    opacity: 0.7,
+                }}
+            />
+        </div>
     ));
 
-    // Add a useEffect to verify the component is mounting
-    useEffect(() => {
-        console.log('RainBackground mounted');
-    }, []);
-
     return (
-        <div className="rain-container">
-            {drops}
+        <div className="rain-wrapper">
+            <div className="rain-container">
+                {drops}
+            </div>
         </div>
     );
 };

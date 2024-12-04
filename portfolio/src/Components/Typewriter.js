@@ -44,9 +44,10 @@ const Typewriter = () => {
     }, [displayText, isDeleting, currentIndex]);
 
     return (
-        <div className="flex justify-center items-center h-16">
-            <div className="text-2xl font-bold">
-                {displayText}
+        <div className="flex flex-col justify-center items-center">
+            <div className="text-2xl font-bold relative">
+                <span className="absolute left-0">A</span>
+                <span className="ml-6">{displayText}</span>
                 <span className="border-r-2 border-black animate-blink"></span>
             </div>
         </div>
