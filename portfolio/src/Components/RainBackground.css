@@ -23,31 +23,26 @@
 
 .drop {
     position: absolute;
-    width: 1px;
-    height: 20px;
-    background-color: white;
-    animation-name: falling;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+    background-color: rgba(255, 255, 255, 0.7);
+    filter: blur(0.5px);
 }
 
 .splash {
     position: absolute;
     bottom: 0;
-    width: 6px;
-    height: 6px;
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.7);
     opacity: 0;
-    animation: splash 1.5s linear infinite;
 }
 
-@keyframes falling {
-    0% {
-        transform: translateY(-100px) rotate(3deg);
+@keyframes continuousFall {
+    from {
+        transform: translateY(0) rotate(3deg);
     }
-    100% {
-        transform: translateY(100vh) rotate(3deg);
+    to {
+        transform: translateY(150vh) rotate(3deg);
     }
 }
 
@@ -58,10 +53,10 @@
     }
     50% {
         transform: scale(1.5);
-        opacity: 0.5;
+        opacity: 0.3;
     }
     100% {
-        transform: scale(3);
+        transform: scale(2);
         opacity: 0;
     }
 } 
