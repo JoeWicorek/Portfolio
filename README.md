@@ -1,4 +1,4 @@
-# Personal Portfolio
+# My Portfolio Website
 
 ## Overview
 A modern, responsive portfolio website built with Next.js and TypeScript.
@@ -34,7 +34,7 @@ A modern, responsive portfolio website built with Next.js and TypeScript.
   ```
 
 ## Deployment
-Deployed on Vercel/GitHub Pages
+Deployed on GitHub Pages
 
 ## License
 MIT License
